@@ -18,15 +18,15 @@ Note: This repo spins up infrastructure on AWS. If you want it on another cloud 
 
 You'll need the following tools installed:
 
-1. [Terraform](https://www.terraform.io/downloads.html)
-	If you are on MacOS, you can install it with `brew install terraform`
-2. [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-	If you are on MacOS, you can install it with `brew install kubectl`
-3. [awscli](https://aws.amazon.com/cli/)
-4. [Helm](https://github.com/helm/helm#install)
-5. A [Docker Environment](https://docs.docker.com/install/)
-6. The [Hackweek Template](https://github.com/salvis2/hackweek-template)
-	Get the template repo locally by running `git clone https://github.com/salvis2/hackweek-template.git`
+- [Terraform](https://www.terraform.io/downloads.html)
+  -If you are on MacOS, you can install it with `brew install terraform`
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+  -If you are on MacOS, you can install it with `brew install kubectl`
+- [awscli](https://aws.amazon.com/cli/)
+- [Helm](https://github.com/helm/helm#install)
+- A [Docker Environment](https://docs.docker.com/install/)
+- The [Hackweek Template](https://github.com/salvis2/hackweek-template)
+  -Get the template repo locally by running `git clone https://github.com/salvis2/hackweek-template.git`
 
 ### Cloud Infrastructure with Terraform
 
