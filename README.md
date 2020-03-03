@@ -137,7 +137,7 @@ You can then do a production deployment with: ``hubploy deploy <hub-name> hub pr
 
 #### Setup Git-Crypt for Secrets
 
-`git-crypt <https://github.com/AGWA/git-crypt>` is used to keep encrypted secrets in the git repository.
+[`git-crypt`](https://github.com/AGWA/git-crypt) is used to keep encrypted secrets in the git repository.
 
 - Install git-crypt. You can get it from brew or your package manager.
 - In your repo, initialize it: `git crypt init`
@@ -153,5 +153,41 @@ You can then do a production deployment with: ``hubploy deploy <hub-name> hub pr
 - If the staging action succeeds, make a PR from staging to prod and merge the PR. This should also trigger an action; make sure the action completes.
 
 Note: *Always* make a PR from staging to prod. Never push directly to prod. We want to keep the staging and prod branches as close to each other as possible, and this is the only long-term guaranteed way to do that.
+
+### Uninstallation
+
+Hopefully you had a good hackweek! Now you can remove the hub and cloud infrastructure so you stop paying for them.
+
+#### Remove the Hub
+
+You will need the helm release's name and namespace. These are procedurally generated, usually both in the format `<your-hub>-hub-<branch>`. For example, with a `deployment/` named `hackweek-hub` on my `staging` branch, the helm release and namespace are both named `hackweek-hub-staging`. 
+
+Uninstalling the hub from the cluster is done with 
+
+```
+helm delete <release-name> -n <namespace-name>
+```
+
+For my example, this would be
+
+```
+helm delete hackweek-hub-staging -n hackweek-hub-staging
+```
+
+#### Release the Cloud Infrastructure
+
+Before releasing, make sure that the result of `kubectl get svc -A` shows no entries with an `EXTERNAL-IP`.
+
+If this is the case, you can run
+
+```
+terraform destroy -var-file=<path/to/your-cluster.tfvars>
+```
+
+Note: This also takes 15-20 minutes and may error out as it tries to destroy a couple Kubernetes resources. Try re-running the command again.
+
+#### Delete the GitHub Repo
+
+You may now delete the GitHub Repo you set up or forked, and you are done!
 
 
