@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: docker://yuvipanda/hubploy:20191210215236cfab2d
+      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
         name: test building image
         with:
-          args: build myhub
+          args: build hackweek-hub

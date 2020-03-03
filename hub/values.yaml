@@ -9,6 +9,76 @@ nfsPVC:
     # serverIP: # IP of your NFS Server
     # shareName: # Path of your NFS share export
 
-jupyterhub: {}
+jupyterhub: 
+  proxy:
+    #secretToken: "in-another-file-that-is-encrypted"
+    https:
+      enabled: false
+      #hosts:
+      #  - hackweek.io
+      #letsencrypt:
+      #  contactEmail: scottyh@uw.edu
+
+  prePuller:
+    continuous:
+      enabled: false
+    hook:
+      enabled: false
+
+  scheduling:
+    userScheduler:
+      enabled: false
+    userPods:
+      nodeAffinity:
+        matchNodePurpose: require
+
+  singleuser:
+    cloudMetadata: # taken care of by eksctl node configuration
+      enabled: true
+    defaultUrl: "/lab"
+    #serviceAccountName: jovyan
+    storage:
+      capacity: 100Gi
+    startTimeout: 600
+    cpu:
+      limit: 4
+      guarantee: 3
+    memory:
+      limit: 16G
+      guarantee: 14G
+
+    profileList:
+      - display_name: "base-image-dev"
+        kubespawner_override:
+          image: pangeodev/base-image:latest
+      - display_name: "pangeo-image-dev"
+        kubespawner_override:
+          image: pangeodev/pangeo-image:2020.02.22
+      - display_name: "ml-image-dev"
+        kubespawner_override: 
+          image: pangeodev/ml-image:latest
+
+  auth:
+    type: github
+    scopes:
+      - "read:user"
+      - "user:email"
+      - "read:org"
+    admin:
+      access: true
+      users:
+        - salvis2
+  hub:
+    resources: # should fill up single node to near capacity
+      requests:
+        cpu: 1
+        memory: 0.75G
+      limits:
+        cpu: 1
+        memory: 1G
+    extraConfig:
+      jupyterlab: |
+        c.Spawner.cmd = ['jupyter-labhub']
+
     # z2jh customizations go here
 

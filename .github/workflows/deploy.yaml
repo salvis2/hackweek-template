@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: docker://yuvipanda/hubploy:20191210215236cfab2d
+      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
         name: unlock git-crypt secrets
         env:
           GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
@@ -27,22 +27,22 @@ jobs:
           # that github *is* passing the variable into the container too.
           # Given that this is our git crypt key, I'm scared
           args: -c "echo ${GIT_CRYPT_KEY} | base64 -d | git crypt unlock - && git crypt status"
-      - uses: docker://yuvipanda/hubploy:20191210215236cfab2d
+      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
         name: build & push image if needed
         with:
-          args: build myhub --check-registry --push
-      - uses: docker://yuvipanda/hubploy:20191210215236cfab2d
+          args: build hackweek-hub --check-registry --push
+      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
         name: Setup Helm
         with:
           entrypoint: /bin/bash
           args: -c "helm init --client-only && helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/ && helm repo update"
-      - uses: docker://yuvipanda/hubploy:dev
+      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
         name: Deploy to staging
         if: github.ref == 'refs/heads/staging'
         with:
-          args: deploy myhub hub staging
-      - uses: docker://yuvipanda/hubploy:20191210215236cfab2d
+          args: deploy hackweek-hub hub staging
+      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
         name: Deploy to prod
         if: github.ref == 'refs/heads/prod'
         with:
-          args: deploy myhub hub prod
+          args: deploy hackweek-hub hub prod

@@ -2,4 +2,4 @@ jupyterhub:
   singleuser:
     memory:
       guarantee: 512M
-      limit: 1G
+      #limit: 1G
