@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
+      - uses: docker://sebialvis/hubploy:20200305233845e427b9
         name: unlock git-crypt secrets
         env:
           GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
@@ -31,17 +31,17 @@ jobs:
       #  name: build & push image if needed
       #  with:
       #    args: build hackweek-hub --check-registry --push
-      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
+      - uses: docker://sebialvis/hubploy:20200305233845e427b9
         name: Setup Helm
         with:
           entrypoint: /bin/bash
           args: -c "helm init --client-only && helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/ && helm repo update"
-      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
+      - uses: docker://sebialvis/hubploy:20200305233845e427b9
         name: Deploy to staging
         if: github.ref == 'refs/heads/staging'
         with:
           args: deploy hackweek-hub hub staging
-      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
+      - uses: docker://sebialvis/hubploy:20200305233845e427b9
         name: Deploy to prod
         if: github.ref == 'refs/heads/prod'
         with:
