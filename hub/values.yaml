@@ -3,11 +3,11 @@ etcJupyter:
   jupyter_notebook_config.json: {}
 
 nfsPVC:
-  enabled: true
+  enabled: false
   # If you want a PVC with NFS that can be used to mount home directories
-  nfs:
-    serverIP: fs-d59c0f7f.efs.us-west-2.amazonaws.com # IP of your NFS Server
-    shareName: hackweek-cluster-home-dirs # Path of your NFS share export
+  #nfs:
+    #serverIP: fs-d59c0f7f.efs.us-west-2.amazonaws.com # IP of your NFS Server
+    #shareName: hackweek-cluster-home-dirs # Path of your NFS share export
 
 jupyterhub: 
   proxy:
@@ -37,21 +37,21 @@ jupyterhub:
       enabled: true
     defaultUrl: "/lab"
     #serviceAccountName: jovyan
-    initContainers:
-      - name: volume-mount-hack
-        image: busybox
-        command:
-          - "sh"
-          - "-c"
-          - >
-            id && chown 1000:1000 /home/jovyan && ls -lhd /home/jovyan ;
-          #  id && chown 1000:1000 /srv/shared && ls -lhd /srv/shared ;
-        securityContext:
-          runAsUser: 0
-        volumeMounts:
-          - name: home
-            mountPath: /home/jovyan
-            subPath: "home/{username}"
+    #initContainers:
+    #  - name: volume-mount-hack
+    #    image: busybox
+    #    command:
+    #      - "sh"
+    #      - "-c"
+    #      - >
+    #        id && chown 1000:1000 /home/jovyan && ls -lhd /home/jovyan ;
+    #      #  id && chown 1000:1000 /srv/shared && ls -lhd /srv/shared ;
+    #    securityContext:
+    #      runAsUser: 0
+    #    volumeMounts:
+    #      - name: home
+    #        mountPath: /home/jovyan
+    #        subPath: "home/{username}"
           #- name: jupyterhub-shared
           #  mountPath: /srv/shared
           #  subPath: "hackweek.pangeo.io/shared"
@@ -60,10 +60,11 @@ jupyterhub:
     #    persistentVolumeClaim:
     #      claimName: data-nfs
     storage:
-      type: static
-      static:
-        pvcName: home-nfs
-        subPath: "home/{username}"
+      dynamic:
+        storageClass: aws-efs
+      #static:
+      #  pvcName: home-nfs
+      #  subPath: "home/{username}"
       #requires having run config/shared--nfs.yaml
       #extraVolumeMounts:
       #  - name: jupyterhub-shared
