@@ -89,7 +89,7 @@ jupyterhub:
           image: pangeodev/base-image:latest
       - display_name: "pangeo-image-dev"
         kubespawner_override:
-          image: pangeodev/pangeo-image:2020.02.22
+          image: pangeodev/pangeo-image:latest
       - display_name: "ml-image-dev"
         kubespawner_override: 
           image: pangeodev/ml-image:latest
