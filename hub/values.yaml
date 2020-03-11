@@ -51,7 +51,7 @@ jupyterhub:
         volumeMounts:
           - name: home
             mountPath: /home/jovyan
-            subPath: "home/hackweek.pangeo.io/{username}"
+            subPath: "home/{username}"
           #- name: jupyterhub-shared
           #  mountPath: /srv/shared
           #  subPath: "hackweek.pangeo.io/shared"
@@ -63,7 +63,7 @@ jupyterhub:
       type: static
       static:
         pvcName: home-nfs
-        subPath: "home/hackweek.pangeo.io/{username}"
+        subPath: "home/{username}"
       #requires having run config/shared--nfs.yaml
       #extraVolumeMounts:
       #  - name: jupyterhub-shared
