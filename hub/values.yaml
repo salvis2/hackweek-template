@@ -3,11 +3,11 @@ etcJupyter:
   jupyter_notebook_config.json: {}
 
 nfsPVC:
-  enabled: false
+  enabled: true
   # If you want a PVC with NFS that can be used to mount home directories
-  # nfs:
-    # serverIP: # IP of your NFS Server
-    # shareName: # Path of your NFS share export
+  nfs:
+    serverIP: fs-d59c0f7f.efs.us-west-2.amazonaws.com # IP of your NFS Server
+    shareName: hackweek-cluster-home-dirs # Path of your NFS share export
 
 jupyterhub: 
   proxy:
@@ -37,8 +37,42 @@ jupyterhub:
       enabled: true
     defaultUrl: "/lab"
     #serviceAccountName: jovyan
+    initContainers:
+      - name: volume-mount-hack
+        image: busybox
+        command:
+          - "sh"
+          - "-c"
+          - >
+            id && chown 1000:1000 /home/jovyan && ls -lhd /home/jovyan ;
+          #  id && chown 1000:1000 /srv/shared && ls -lhd /srv/shared ;
+        securityContext:
+          runAsUser: 0
+        volumeMounts:
+          - name: home
+            mountPath: /home/jovyan
+            subPath: "home/hackweek.pangeo.io/{username}"
+          #- name: jupyterhub-shared
+          #  mountPath: /srv/shared
+          #  subPath: "hackweek.pangeo.io/shared"
+    #extraVolumes:
+    #  - name: jupyterhub-shared
+    #    persistentVolumeClaim:
+    #      claimName: data-nfs
     storage:
-      capacity: 100Gi
+      type: static
+      static:
+        pvcName: home-nfs
+        subPath: "home/hackweek.pangeo.io/{username}"
+      #requires having run config/shared--nfs.yaml
+      #extraVolumeMounts:
+      #  - name: jupyterhub-shared
+      #    mountPath: /srv/shared
+      #    subPath: "icesat2.pangeo.io/shared"
+      #extraVolumes:
+      #  - name: jupyterhub-shared
+      #    persistentVolumeClaim:
+      #      claimName: shared-nfs
     startTimeout: 600
     cpu:
       limit: 4
