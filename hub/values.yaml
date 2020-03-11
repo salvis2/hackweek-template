@@ -59,9 +59,6 @@ jupyterhub:
     #  - name: jupyterhub-shared
     #    persistentVolumeClaim:
     #      claimName: data-nfs
-    storage:
-      dynamic:
-        storageClass: aws-efs
       #static:
       #  pvcName: home-nfs
       #  subPath: "home/{username}"
@@ -74,6 +71,10 @@ jupyterhub:
       #  - name: jupyterhub-shared
       #    persistentVolumeClaim:
       #      claimName: shared-nfs
+    # Only settings required to use the efs-provisioner
+    storage:
+      dynamic:
+        storageClass: aws-efs
     startTimeout: 600
     cpu:
       limit: 4
