@@ -27,10 +27,10 @@ jobs:
           # that github *is* passing the variable into the container too.
           # Given that this is our git crypt key, I'm scared
           args: -c "echo ${GIT_CRYPT_KEY} | base64 -d | git crypt unlock - && git crypt status"
-      - uses: docker://sebialvis/hubploy:2020021923263068ef3a
-        name: build & push image if needed
-        with:
-          args: build hackweek-hub --check-registry --push
+     # - uses: docker://sebialvis/hubploy:2020021923263068ef3a
+     #   name: build & push image if needed
+     #   with:
+     #     args: build hackweek-hub --check-registry --push
       - uses: docker://sebialvis/hubploy:2020021923263068ef3a
         name: Setup Helm
         with:
