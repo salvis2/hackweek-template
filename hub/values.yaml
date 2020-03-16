@@ -15,7 +15,7 @@ jupyterhub:
     https:
       enabled: false
       #hosts:
-      #  - hackweek.io
+      #  - icesat-2.hackweek.io
       #letsencrypt:
       #  contactEmail: scottyh@uw.edu
 
@@ -98,6 +98,8 @@ jupyterhub:
     type: github
     github:
       callbackUrl: "http://icesat-2.hackweek.io/hub/oauth_callback"
+      orgWhitelist:
+        - "ICESAT-2HackWeek"
     scopes:
       - "read:user"
       - "user:email"
