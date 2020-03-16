@@ -96,6 +96,8 @@ jupyterhub:
 
   auth:
     type: github
+    github:
+      callbackUrl: "http://icesat-2.hackweek.io/hub/oauth_callback"
     scopes:
       - "read:user"
       - "user:email"
