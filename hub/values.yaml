@@ -13,11 +13,11 @@ jupyterhub:
   proxy:
     #secretToken: "in-another-file-that-is-encrypted"
     https:
-      #enabled: false
-      hosts:
-        - icesat-2.hackweek.io
-      letsencrypt:
-        contactEmail: scottyh@uw.edu
+      enabled: false
+      #hosts:
+      #  - hackweek.io
+      #letsencrypt:
+      #  contactEmail: scottyh@uw.edu
 
   prePuller:
     continuous:
