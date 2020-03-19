@@ -79,7 +79,7 @@ You need to find all things marked TODO and fill them in. In particular,
 #### Build and Push the Hub's Image
 
 - Make sure tha appropriate docker credential helper is installed, so hubploy can push to the registry you need.
-  - For AWS, you need `docker-ecr-credential-helper <https://github.com/awslabs/amazon-ecr-credential-helper>`
+  - For AWS, you need [`docker-ecr-credential-helper`](https://github.com/awslabs/amazon-ecr-credential-helper)
 
 - Make sure you are in your repo's root directory, so hubploy can find the directory structure it expects.
 
@@ -127,7 +127,7 @@ You can now customize your hub in two major ways:
 
 `deployments/<hub-name>/config/staging.yaml` and `deployments/<hub-name>/config/prod.yaml` are files specific to the staging & prod versions of the hub. These should be *as minimal as possible*. Ideally, only DNS entries, IP addresses, should be here.
 
-`deployments/<hub-name>/secrets/staging.yaml` and `deployments/<hub-name>/secrets/prod.yaml` should contain information that mustn't be public. This would be proxy / hub secret tokens, any authentication tokens you have, etc. These files *must* be protected by something like `git-crypt <https://github.com/AGWA/git-crypt>` or `sops <https://github.com/mozilla/sops`. **THIS REPO TEMPLATE DOES NOT HAVE THIS PROTECTION SET UP YET**
+`deployments/<hub-name>/secrets/staging.yaml` and `deployments/<hub-name>/secrets/prod.yaml` should contain information that mustn't be public. This would be proxy / hub secret tokens, any authentication tokens you have, etc. These files *must* be protected by something like [`git-crypt`](https://github.com/AGWA/git-crypt) or [`sops`](https://github.com/mozilla/sops). **THIS REPO TEMPLATE DOES NOT HAVE THIS PROTECTION SET UP YET**
 
 You can customize the staging hub, deploy it with ``hubploy deploy <hub-name> hub staging``, and iterate until you like how it behaves.
 
