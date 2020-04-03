@@ -4,7 +4,7 @@ on:
     branches:
     - staging
     - prod
-docker pull sebialvis/hubploy:20200219222835399f71
+
 jobs:
   build:
     name:
