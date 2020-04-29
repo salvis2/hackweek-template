@@ -6,3 +6,6 @@ jupyterhub:
       #  - icesat-2.hackweek.io
       #letsencrypt:
       #  contactEmail: scottyh@uw.edu
+  auth:
+    github:
+      callbackUrl: "http://icesat-2.hackweek.io/hub/oauth_callback"
