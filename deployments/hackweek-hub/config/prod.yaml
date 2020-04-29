@@ -1,1 +1,8 @@
-jupyterhub: {}
+jupyterhub: 
+  proxy:
+    https:
+      enabled: false
+      #hosts:
+      #  - icesat-2.hackweek.io
+      #letsencrypt:
+      #  contactEmail: scottyh@uw.edu

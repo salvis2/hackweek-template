@@ -10,14 +10,14 @@ nfsPVC:
     #shareName: hackweek-cluster-home-dirs # Path of your NFS share export
 
 jupyterhub: 
-  proxy:
+  #proxy:
     #secretToken: "in-another-file-that-is-encrypted"
-    https:
+    #https:
       #enabled: false
-      hosts:
-        - icesat-2.hackweek.io
-      letsencrypt:
-        contactEmail: scottyh@uw.edu
+      #hosts:
+      #  - icesat-2.hackweek.io
+      #letsencrypt:
+      #  contactEmail: scottyh@uw.edu
 
   prePuller:
     continuous:

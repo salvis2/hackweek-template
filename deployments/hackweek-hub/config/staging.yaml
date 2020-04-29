@@ -3,3 +3,10 @@ jupyterhub:
     continuous:
       # Don't need continuous pre-puller on staging
       enabled: false
+  proxy:
+    https:
+      enabled: false
+      #hosts:
+      #  - staging.icesat-2.hackweek.io
+      #letsencrypt:
+      #  contactEmail: scottyh@uw.edu
