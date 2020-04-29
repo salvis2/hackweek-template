@@ -5,11 +5,11 @@ jupyterhub:
       enabled: false
   proxy:
     https:
-      enabled: false
-      #hosts:
-      #  - staging.icesat-2.hackweek.io
-      #letsencrypt:
-      #  contactEmail: scottyh@uw.edu
+      #enabled: false
+      hosts:
+        - staging.icesat-2.hackweek.io
+      letsencrypt:
+        contactEmail: scottyh@uw.edu
   auth:
     github:
       callbackUrl: "http://staging.icesat-2.hackweek.io/hub/oauth_callback"
