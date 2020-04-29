@@ -7,3 +7,21 @@ jupyterhub:
     - display_name: "IceSat-2 Hackweek 2020"
       kubespawner_override:
         image: uwhackweeks/icesat2:latest
+
+  auth:
+    type: github
+    github:
+      orgWhitelist:
+        - "ICESAT-2HackWeek"
+        - "pangeo-data"
+    scopes:
+      - "read:user"
+      - "user:email"
+      - "read:org"
+    admin:
+      access: true
+      users:
+        - salvis2
+        - scottyhq
+        - aaarendt
+        - JessicaS11
