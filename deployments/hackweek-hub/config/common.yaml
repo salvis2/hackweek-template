@@ -6,6 +6,7 @@ jupyterhub:
     profileList:
     - display_name: "IceSat-2 Hackweek 2020"
       kubespawner_override:
+        default: true
         image: uwhackweeks/icesat2:latest
 
   auth:
