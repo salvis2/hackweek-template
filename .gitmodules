@@ -1,4 +1,4 @@
 [submodule "cloud-infrastructure"]
 	path = cloud-infrastructure
-	url = https://github.com/salvis2/terraform-deploy
-	branch = private_nodes
+	url = https://github.com/ICESAT-2HackWeek/terraform-deploy
+	branch = master
