@@ -3,11 +3,9 @@ jupyterhub:
     memory:
       guarantee: 512M
       #limit: 1G
-    profileList:
-    - display_name: "IceSat-2 Hackweek 2020"
-      kubespawner_override:
-        default: true
-        image: uwhackweeks/icesat2:latest
+    image:
+      name: uwhackweeks/icesat2
+      tag: latest
 
   auth:
     type: github

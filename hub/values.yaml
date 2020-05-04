@@ -83,17 +83,6 @@ jupyterhub:
       limit: 16G
       guarantee: 14G
 
-    profileList:
-      - display_name: "base-image-dev"
-        kubespawner_override:
-          image: pangeodev/base-image:latest
-      - display_name: "pangeo-image-dev"
-        kubespawner_override:
-          image: pangeodev/pangeo-image:latest
-      - display_name: "ml-image-dev"
-        kubespawner_override: 
-          image: pangeodev/ml-image:latest
-
   hub:
     resources: # should fill up single node to near capacity
       requests:
