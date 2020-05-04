@@ -1,8 +1,8 @@
 jupyterhub:
-  prePuller:
-    continuous:
+  #prePuller:
+    #continuous:
       # Don't need continuous pre-puller on staging
-      enabled: false
+      #enabled: false
   proxy:
     https:
       #enabled: false

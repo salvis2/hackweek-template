@@ -1,4 +1,7 @@
 jupyterhub:
+  prePuller:
+    continuous:
+      enabled: true
   singleuser:
     memory:
       guarantee: 512M
