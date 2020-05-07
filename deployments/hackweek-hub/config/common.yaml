@@ -1,14 +1,19 @@
 jupyterhub:
   prePuller:
     continuous:
-      enabled: true
+      enabled: false
   singleuser:
     memory:
       guarantee: 512M
       #limit: 1G
-    image:
-      name: uwhackweeks/icesat2
-      tag: latest
+    #image:
+    #  name: uwhackweeks/icesat2
+    #  tag: latest
+    profileList:
+      - display_name: "IceSat-2 Hackweek 2020 Image"
+        default: true
+        kubespawner_override:
+          image: uwhackweeks/icesat2:latest
 
   auth:
     type: github
