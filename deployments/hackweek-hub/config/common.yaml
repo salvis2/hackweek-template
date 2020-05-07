@@ -14,6 +14,17 @@ jupyterhub:
         default: true
         kubespawner_override:
           image: uwhackweeks/icesat2:latest
+   # Only settings required to use the efs-provisioner
+    storage:
+      dynamic:
+        storageClass: aws-efs
+    startTimeout: 600
+    cpu:
+      limit: 2
+      guarantee: 1
+    memory:
+      limit: 8G
+      guarantee: 7G
 
   auth:
     type: github
