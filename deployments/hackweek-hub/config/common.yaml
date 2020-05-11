@@ -9,6 +9,7 @@ jupyterhub:
     #image:
     #  name: uwhackweeks/icesat2
     #  tag: latest
+    serviceAccountName: jovyan
     profileList:
       - display_name: "IceSat-2 Hackweek 2020 Image"
         default: true
