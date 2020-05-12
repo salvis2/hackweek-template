@@ -9,72 +9,24 @@ nfsPVC:
     #serverIP: fs-d59c0f7f.efs.us-west-2.amazonaws.com # IP of your NFS Server
     #shareName: hackweek-cluster-home-dirs # Path of your NFS share export
 
-jupyterhub: 
-  #proxy:
-    #secretToken: "in-another-file-that-is-encrypted"
-    #https:
-      #enabled: false
-      #hosts:
-      #  - icesat-2.hackweek.io
-      #letsencrypt:
-      #  contactEmail: scottyh@uw.edu
-
+jupyterhub:
   prePuller:
     continuous:
       enabled: false
     hook:
       enabled: false
-
   scheduling:
     userScheduler:
       enabled: false
     userPods:
       nodeAffinity:
         matchNodePurpose: require
-
   singleuser:
-    cloudMetadata: # taken care of by eksctl node configuration
+    cloudMetadata:
       enabled: true
     defaultUrl: "/lab"
-    #serviceAccountName: jovyan
-    #initContainers:
-    #  - name: volume-mount-hack
-    #    image: busybox
-    #    command:
-    #      - "sh"
-    #      - "-c"
-    #      - >
-    #        id && chown 1000:1000 /home/jovyan && ls -lhd /home/jovyan ;
-    #      #  id && chown 1000:1000 /srv/shared && ls -lhd /srv/shared ;
-    #    securityContext:
-    #      runAsUser: 0
-    #    volumeMounts:
-    #      - name: home
-    #        mountPath: /home/jovyan
-    #        subPath: "home/{username}"
-          #- name: jupyterhub-shared
-          #  mountPath: /srv/shared
-          #  subPath: "hackweek.pangeo.io/shared"
-    #extraVolumes:
-    #  - name: jupyterhub-shared
-    #    persistentVolumeClaim:
-    #      claimName: data-nfs
-      #static:
-      #  pvcName: home-nfs
-      #  subPath: "home/{username}"
-      #requires having run config/shared--nfs.yaml
-      #extraVolumeMounts:
-      #  - name: jupyterhub-shared
-      #    mountPath: /srv/shared
-      #    subPath: "icesat2.pangeo.io/shared"
-      #extraVolumes:
-      #  - name: jupyterhub-shared
-      #    persistentVolumeClaim:
-      #      claimName: shared-nfs
- 
-
   hub:
-    resources: # should fill up single node to near capacity
+    resources:
       requests:
         cpu: 1
         memory: 0.75G
