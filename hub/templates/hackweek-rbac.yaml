@@ -1,0 +1,14 @@
+{{- if .Values.rbac.enabled -}}
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: {{ .Values.rbac.serviceAccountName }}
+  namespace: {{ .Release.Namespace }}
+  annotations: 
+    eks.amazonaws.com/role-arn: {{ .Values.rbac.serviceAccountRoleArn }}
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    component: hub
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+{{- end -}}
