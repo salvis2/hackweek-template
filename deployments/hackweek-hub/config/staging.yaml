@@ -10,6 +10,12 @@ jupyterhub:
         - staging.icesat-2.hackweek.io
       letsencrypt:
         contactEmail: scottyh@uw.edu
+  singleuser:
+    profileList:
+      - display_name: "IceSat-2 Hackweek 2020 Image"
+        default: true
+        kubespawner_override:
+          image: uwhackweeks/icesat2:master
   auth:
     github:
       callbackUrl: "http://staging.icesat-2.hackweek.io/hub/oauth_callback"
