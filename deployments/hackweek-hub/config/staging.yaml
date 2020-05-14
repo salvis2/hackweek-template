@@ -19,3 +19,11 @@ jupyterhub:
   auth:
     github:
       callbackUrl: "http://staging.icesat-2.hackweek.io/hub/oauth_callback"
+  hub:
+    resources:
+      requests:
+        cpu: 0
+        memory: 0
+      limits:
+        cpu: 0.5
+        memory: 1G

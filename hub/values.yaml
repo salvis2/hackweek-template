@@ -26,13 +26,6 @@ jupyterhub:
       enabled: true
     defaultUrl: "/lab"
   hub:
-    resources:
-      requests:
-        cpu: 1
-        memory: 0.75G
-      limits:
-        cpu: 1
-        memory: 1G
     extraConfig:
       jupyterlab: |
         c.Spawner.cmd = ['jupyter-labhub']
