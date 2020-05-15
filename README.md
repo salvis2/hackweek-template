@@ -4,6 +4,6 @@ Welcome to the repository for the IceSat-2 Hackweek 2020's JupyterHub! This main
 
 The website for the hackweek is https://icesat-2hackweek.github.io/.
 
-The staging Hub is located at http://staging.icesat-2.hackweek.io/.
+The JupysterHub is located at http://icesat-2.hackweek.io/.
 
 Hub learning can be found at https://icesat-2hackweek.github.io/learning-resources/.
