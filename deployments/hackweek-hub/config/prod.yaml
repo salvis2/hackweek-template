@@ -1,11 +1,11 @@
 jupyterhub: 
   proxy:
     https:
-      enabled: false
-      #hosts:
-      #  - icesat-2.hackweek.io
-      #letsencrypt:
-      #  contactEmail: scottyh@uw.edu
+      #enabled: false
+      hosts:
+        - icesat-2.hackweek.io
+      letsencrypt:
+        contactEmail: scottyh@uw.edu
   singleuser:
     profileList:
       - display_name: "IceSat-2 Hackweek 2020 Image"
