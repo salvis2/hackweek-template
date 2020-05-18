@@ -12,6 +12,38 @@ jupyterhub:
         default: true
         kubespawner_override:
           image: uwhackweeks/icesat2:latest
+    initContainers:
+      - name: volume-mount-hack
+        image: busybox
+        command:
+          - "sh"
+          - "-c"
+          - >
+            id && chown 1000:1000 /srv/shared && ls -lhd /srv/shared ;
+        securityContext:
+          runAsUser: 0
+        volumeMounts:
+          - name: jupyterhub-shared
+            mountPath: /srv/shared
+            subPath: "icesat-2.hackweek.io/shared"
+          - name: tutorial-data
+            mountPath: /srv/tutorial-data/
+            subPath: "icesat-2.hackweek.io/tutorial-data/"
+    storage:
+      extraVolumeMounts:
+        - name: jupyterhub-shared
+          mountPath: /srv/shared
+          subPath: "icesat-2.hackweek.io/shared"
+        - name: tutorial-data
+          mountPath: /srv/tutorial-data/
+          subPath: "icesat-2.hackweek.io/tutorial-data/"
+      extraVolumes:
+        - name: jupyterhub-shared
+          persistentVolumeClaim:
+            claimName: shared-nfs
+        - name: tutorial-data
+          persistentVolumeClaim:
+            claimName: icesat2-tutorial-data-claim
   auth:
     github:
       callbackUrl: "http://icesat-2.hackweek.io/hub/oauth_callback"

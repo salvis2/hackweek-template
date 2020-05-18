@@ -7,33 +7,10 @@ jupyterhub:
       guarantee: 512M
       #limit: 1G
     serviceAccountName: jovyan
-    initContainers:
-      - name: volume-mount-hack
-        image: busybox
-        command:
-          - "sh"
-          - "-c"
-          - >
-            id && chown 1000:1000 /srv/shared && ls -lhd /srv/shared ;
-        securityContext:
-          runAsUser: 0
-        volumeMounts:
-          - name: jupyterhub-shared
-            mountPath: /srv/shared
-            subPath: "icesat-2.hackweek.io/shared"
    # Only settings required to use the efs-provisioner
     storage:
       dynamic:
         storageClass: aws-efs
-
-      extraVolumeMounts:
-        - name: jupyterhub-shared
-          mountPath: /srv/shared
-          subPath: "icesat-2.hackweek.io/shared"
-      extraVolumes:
-        - name: jupyterhub-shared
-          persistentVolumeClaim:
-            claimName: shared-nfs
     startTimeout: 600
     cpu:
       limit: 2
