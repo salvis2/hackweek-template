@@ -29,6 +29,8 @@ jupyterhub:
     extraConfig:
       jupyterlab: |
         c.Spawner.cmd = ['jupyter-labhub']
+      01-hub-config: |
+        c.JupyterHub.shutdown_on_logout = True
 
     # z2jh customizations go here
 
