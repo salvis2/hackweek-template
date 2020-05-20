@@ -18,6 +18,14 @@ jupyterhub:
     memory:
       limit: 8G
       guarantee: 7G
+    lifecycleHooks:
+      postStart:
+        exec:
+          command:
+            - "sh"
+            - "-c"
+            - >
+              ln -sf /srv/shared /home/jovyan/shared
 
   auth:
     type: github
