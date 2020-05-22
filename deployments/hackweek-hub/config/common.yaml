@@ -25,7 +25,7 @@ jupyterhub:
             - "sh"
             - "-c"
             - >
-              ln -sf /srv/shared /home/jovyan/shared
+              test -L /home/jovyan/shared || ln -s /srv/shared /home/jovyan/shared
 
   auth:
     type: github
