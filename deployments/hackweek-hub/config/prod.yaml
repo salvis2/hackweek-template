@@ -26,18 +26,14 @@ jupyterhub:
         volumeMounts:
           - name: jupyterhub-shared
             mountPath: /srv/shared
-            subPath: "icesat-2.hackweek.io/shared"
           - name: tutorial-data
             mountPath: /srv/tutorial-data/
-            subPath: "icesat-2.hackweek.io/tutorial-data/"
     storage:
       extraVolumeMounts:
         - name: jupyterhub-shared
           mountPath: /srv/shared
-          subPath: "icesat-2.hackweek.io/shared"
         - name: tutorial-data
           mountPath: /srv/tutorial-data/
-          subPath: "icesat-2.hackweek.io/tutorial-data/"
       extraVolumes:
         - name: jupyterhub-shared
           persistentVolumeClaim:
