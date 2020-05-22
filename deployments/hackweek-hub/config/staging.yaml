@@ -23,7 +23,7 @@ jupyterhub:
           - "sh"
           - "-c"
           - >
-            id && chown 1000:1000 /srv/shared && ls -lhd /srv/shared ;
+            id && chown 1000:1000 -R /srv/shared ;
         securityContext:
           runAsUser: 0
         volumeMounts:

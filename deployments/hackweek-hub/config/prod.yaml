@@ -19,8 +19,8 @@ jupyterhub:
           - "sh"
           - "-c"
           - >
-            id && chown 1000:1000 /srv/shared && ls -lhd /srv/shared ;
-            id && chown 1000:1000 /srv/tutorial-data && ls -lhd /srv/tutorial-data ;
+            id && chown 1000:1000 -R /srv/shared ;
+            id && chown 0:0 -R /srv/tutorial-data ;
         securityContext:
           runAsUser: 0
         volumeMounts:
