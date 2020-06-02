@@ -27,8 +27,8 @@ jupyterhub:
     defaultUrl: "/lab"
   hub:
     extraConfig:
-      jupyterlab: |
-        c.Spawner.cmd = ['jupyter-labhub']
+      00-jupyterlab: |
+        c.Spawner.default_url = '/lab'
       01-hub-config: |
         c.JupyterHub.shutdown_on_logout = True
 
