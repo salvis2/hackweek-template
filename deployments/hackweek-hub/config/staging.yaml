@@ -37,6 +37,14 @@ jupyterhub:
         - name: jupyterhub-shared
           persistentVolumeClaim:
             claimName: shared-nfs
+    lifecycleHooks:
+      postStart:
+        exec:
+          command:
+            - "sh"
+            - "-c"
+            - >
+              test -L /home/jovyan/shared || ln -s /srv/shared /home/jovyan/shared
   auth:
     github:
       callbackUrl: "http://staging.icesat-2.hackweek.io/hub/oauth_callback"
