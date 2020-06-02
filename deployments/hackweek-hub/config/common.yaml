@@ -16,7 +16,7 @@ jupyterhub:
       limit: 4
       guarantee: 2
     memory:
-      limit: 7G
+      limit: 8G
       guarantee: 7G
     lifecycleHooks:
       postStart:
