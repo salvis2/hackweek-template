@@ -14,7 +14,7 @@ jupyterhub:
     startTimeout: 600
     cpu:
       limit: 4
-      guarantee: 2
+      guarantee: 1.75
     memory:
       limit: 8G
       guarantee: 7G
