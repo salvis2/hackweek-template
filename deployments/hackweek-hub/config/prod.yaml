@@ -11,7 +11,7 @@ jupyterhub:
       - display_name: "IceSat-2 Hackweek 2020 Image"
         default: true
         kubespawner_override:
-          image: uwhackweeks/icesat2:2020.06.03
+          image: uwhackweeks/icesat2:2020.06.05
     initContainers:
       - name: volume-mount-hack
         image: busybox
