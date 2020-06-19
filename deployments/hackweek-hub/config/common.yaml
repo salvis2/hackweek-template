@@ -18,6 +18,9 @@ jupyterhub:
     memory:
       limit: 8G
       guarantee: 7G
+  # automatically terminate pods after 12 hours 
+  cull:
+    maxAge: 43200
   auth:
     type: github
     github:
