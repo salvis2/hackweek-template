@@ -25,7 +25,6 @@ jupyterhub:
     type: github
     github:
       orgWhitelist:
-        - "ICESAT-2HackWeek"
         - "pangeo-data"
     scopes:
       - "read:user"
@@ -35,9 +34,6 @@ jupyterhub:
       access: true
       users:
         - salvis2
-        - scottyhq
-        - aaarendt
-        - JessicaS11
   hub:
     resources:
       requests:
@@ -59,9 +55,9 @@ jupyterhub:
       customPodHook: |
         c.JupyterHub.template_paths = ['/srv/jupyterhub/style/templates']
         c.JupyterHub.template_vars = {
-          'pangeo_hub_title': 'icesat-2.hackweek.io',
+          'pangeo_hub_title': '',
           'pangeo_hub_subtitle': 'a community hub for the pangeo project',
-          'pangeo_welcome': """Welcome to icesat-2.hackweek.io, the computational environment for <a href="https://icesat-2hackweek.github.io">Icesat-2 Hackweek</a>! This hub lives in AWS region <code>us-west-2</code>. It is maintained by the <a href="http://pangeo.io">Pangeo project</a> and is supported by <a href="https://github.com/pangeo-data/nasa-access-17">NASA Grant #17-ACCESS17-0003</a> and cloud credits from Amazon. <strong>This is a prototype and should be treated accordingly. We make no promises that the hub will remain active. Do not store passwords or sensitive data in your home directory</strong> Access is currently limited to members of the <a href="https://github.com/pangeo-data">Pangeo GitHub Organization</a> and the <a href="https://github.com/ICESAT-2HackWeek">IceSat-2 Hackweek Organization</a>. To provide feedback and report any technical problems, please use the <a href="https://github.com/ICESAT-2HackWeek/jupyterhub-2020/issues">github issue tracker</a>."""
+          'pangeo_welcome': """Welcome to _unspecified website_, the computational environment for <a href=""> Hackweek</a>! This hub lives in AWS region <code>us-west-2</code>. It is maintained by the <a href="http://pangeo.io">Pangeo project</a> and is supported by <a href="https://github.com/pangeo-data/nasa-access-17">NASA Grant #17-ACCESS17-0003</a> and cloud credits from Amazon. <strong>This is a prototype and should be treated accordingly. We make no promises that the hub will remain active. Do not store passwords or sensitive data in your home directory</strong> Access is currently limited to members of the <a href="https://github.com/pangeo-data">Pangeo GitHub Organization</a> and the <a href=""> Hackweek Organization</a>. To provide feedback and report any technical problems, please use the <a href="">github issue tracker</a>."""
         }
     extraVolumes:
       - name: custom-assets

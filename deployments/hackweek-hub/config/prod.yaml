@@ -1,17 +1,17 @@
 jupyterhub: 
   proxy:
     https:
-      #enabled: false
-      hosts:
-        - icesat-2.hackweek.io
-      letsencrypt:
-        contactEmail: scottyh@uw.edu
+      enabled: false
+      #hosts:
+      #  - 
+      #letsencrypt:
+      #  contactEmail: scottyh@uw.edu
   singleuser:
     profileList:
-      - display_name: "IceSat-2 Hackweek 2020 Image"
+      - display_name: ""
         default: true
         kubespawner_override:
-          image: uwhackweeks/icesat2:2020.06.05
+          image: uwhackweeks/
     initContainers:
       - name: volume-mount-hack
         image: busybox
@@ -40,7 +40,7 @@ jupyterhub:
             claimName: shared-nfs
         - name: tutorial-data
           persistentVolumeClaim:
-            claimName: icesat2-tutorial-data-claim
+            claimName: tutorial-data-claim
     lifecycleHooks:
       postStart:
         exec:
@@ -52,4 +52,4 @@ jupyterhub:
               test -L /home/jovyan/tutorial-data || ln -s /srv/tutorial-data /home/jovyan/tutorial-data ;
   auth:
     github:
-      callbackUrl: "http://icesat-2.hackweek.io/hub/oauth_callback"
+      callbackUrl: ""
