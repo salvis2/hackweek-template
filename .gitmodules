@@ -1,4 +1,4 @@
 [submodule "cloud-infrastructure"]
 	path = cloud-infrastructure
-	url = https://github.com/ICESAT-2HackWeek/terraform-deploy
-	branch = master
+	url = https://github.com/pangeo-data/terraform-deploy
+	branch = hackweek-template-infrastructure
