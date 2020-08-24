@@ -30,6 +30,30 @@ You'll need the following tools installed:
 
 ### Cloud Infrastructure with Terraform
 
+### Get `terraform-deploy` Submodule
+
+This module builds off of `terraform-deploy` for the infrastructure management
+. You can find that repo [here](https://github.com/pangeo-data/terraform-deploy)
+; we are currently using the `hackweek-template-infrastructure` branch.
+
+It is recommended to fork the `terraform-deploy` repo and host it wherever
+your fork of this repo is. You can then change `.gitmodules` to have the
+new location of the submodule.
+
+Get the submodule into the `cloud-infrastructure` folder by running
+
+```
+git submodule init
+```
+
+This will bring in the infrastructure repo at a specific commit. You can
+work with it as a normal git repo by running
+
+```
+cd cloud-infrastructure
+git checkout master
+```
+
 #### Configure Permissions
 
 Before running any Terraform commands, you need to be authenticated to the awscli. The `cloud-infrastructure/aws-creds/` directory has all the permissions needed for Terraform to run. You can choose to generate a user or role to insure minimum permission levels. Both of these options are present in `iam.tf`. If you choose to use one of these, uncomment the relevent lines and run `terraform init`, then `terraform apply`. You can then configure the credentials as needed with `aws configure`.
