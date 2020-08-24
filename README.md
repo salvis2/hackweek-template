@@ -26,7 +26,7 @@ You'll need the following tools installed:
 - [Helm](https://github.com/helm/helm#install)
 - A [Docker Environment](https://docs.docker.com/install/)
 - The [Hackweek Template](https://github.com/salvis2/hackweek-template)
-  -Get the template repo locally by running `git clone https://github.com/salvis2/hackweek-template.git`
+  -Get the template repo locally by forking the repo to your own workspace / organization and then cloning.
 
 ### Cloud Infrastructure with Terraform
 
