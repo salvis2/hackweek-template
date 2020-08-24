@@ -32,14 +32,14 @@ future, this repo may expand to include deployments on other cloud providers.
 You'll need the following tools installed:
 
 - [Terraform](https://www.terraform.io/downloads.html)
-  -If you are on MacOS, you can install it with `brew install terraform`
+  - If you are on MacOS, you can install it with `brew install terraform`
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-  -If you are on MacOS, you can install it with `brew install kubectl`
+  - If you are on MacOS, you can install it with `brew install kubectl`
 - [awscli](https://aws.amazon.com/cli/)
 - [Helm](https://github.com/helm/helm#install)
 - A [Docker Environment](https://docs.docker.com/install/)
 - The [Hackweek Template](https://github.com/salvis2/hackweek-template)
-  -Get the template repo locally by forking the repo to your own workspace /
+  - Get the template repo locally by forking the repo to your own workspace /
   organization and then cloning.
 
 ### Cloud Infrastructure with Terraform
